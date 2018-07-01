@@ -1235,6 +1235,10 @@ class Worksheet(object):
         :param indx:
 
             The zero-relative index of the column to be returned.
+
+        :returns:
+
+            the :class:`Column` at the given index.
         """
         if indx not in self.__cols:
             self.__cols[indx] = self.Column(indx, self)
@@ -1247,6 +1251,10 @@ class Worksheet(object):
         :param indx:
 
             The zero-relative index of the row to be returned.
+
+        :returns:
+
+            The :class:`Row` at the given index.
         """
         if indx not in self.__rows:
             if indx in self.__flushed_rows:
@@ -1266,6 +1274,10 @@ class Worksheet(object):
 
             The zero-relative number of the row in the worksheet which will
             have its height returned.
+
+        :returns:
+
+            The height of a row in pixels.
         """
         if row in self.__rows:
             return self.__rows[row].get_height_in_pixels()
@@ -1280,6 +1292,10 @@ class Worksheet(object):
 
             The zero-relative number of the column in the worksheet which will
             have its width returned.
+
+        :returns:
+
+            The width of the column in pixels.
         """
         if col in self.__cols:
             return self.__cols[col].width_in_pixels()
