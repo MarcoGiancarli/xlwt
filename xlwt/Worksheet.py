@@ -1110,6 +1110,34 @@ class Worksheet(object):
         self.__merged_ranges.append((r1, r2, c1, c2))
 
     def write_merge(self, r1, r2, c1, c2, label="", style=Style.default_style):
+        """
+        This method merges cells in a box from r1 to r2 and c1 to c2 and then
+        writes the label to the resulting cell.
+
+        :param r1:
+
+            The zero-relative starting row of the merged cell.
+
+        :param r2:
+
+            The zero-relative ending row of the merged cell.
+
+        :param c1:
+
+            The zero-relative starting column of the merged cell.
+
+        :param c2:
+
+            The zero-relative ending column of the merged cell.
+
+        :param label:
+
+            The text to be written to the merged cell.
+
+        :param style:
+
+            The style to be used in the merged cell. Defaults as default style.
+        """
         assert 0 <= c1 <= c2 <= 255
         assert 0 <= r1 <= r2 <= 65535
         self.write(r1, c1, label, style)
