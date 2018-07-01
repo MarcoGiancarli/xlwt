@@ -1120,23 +1120,106 @@ class Worksheet(object):
         self.__merged_ranges.append((r1, r2, c1, c2))
 
     def insert_bitmap(self, filename, row, col, x = 0, y = 0, scale_x = 1, scale_y = 1):
+        """
+        This method inserts a bitmap image from a filename at the given row
+        and column.
+
+        :param filename:
+
+            The name of the file from which the image will be loaded.
+
+        :param row:
+
+            The zero-relative number of the row in which the image will be
+            inserted.
+
+        :param col:
+
+            The zero-relative number of the column in which the image will be
+            inserted.
+        
+        :param x:
+            
+            Horizontal offset of the image relative to the starting column.
+
+        :param y:
+            
+            Vertical offset of the image relative to the starting row.
+
+        :param scale_x: 
+
+            The horizontal scaling of the image.
+
+        :param scale_y: 
+
+            The vertical scaling of the image.
+        """
         bmp = Bitmap.ImDataBmpRecord(filename)
         obj = Bitmap.ObjBmpRecord(row, col, self, bmp, x, y, scale_x, scale_y)
 
         self.__bmp_rec += obj.get() + bmp.get()
 
     def insert_bitmap_data(self, data, row, col, x = 0, y = 0, scale_x = 1, scale_y = 1):
+        """
+        This method inserts a bitmap image from a filename at the given row
+        and column.
+
+        :param data:
+
+            The raw data of the bitmap image.
+
+        :param row:
+
+            The zero-relative number of the row in which the image will be
+            inserted.
+
+        :param col:
+
+            The zero-relative number of the column in which the image will be
+            inserted.
+        
+        :param x:
+            
+            Horizontal offset of the image relative to the starting column.
+
+        :param y:
+            
+            Vertical offset of the image relative to the starting row.
+
+        :param scale_x: 
+
+            The horizontal scaling of the image.
+
+        :param scale_y: 
+
+            The vertical scaling of the image.
+        """
         bmp = Bitmap.ImRawDataBmpRecord(data)
         obj = Bitmap.ObjBmpRecord(row, col, self, bmp, x, y, scale_x, scale_y)
 
         self.__bmp_rec += obj.get() + bmp.get()
 
     def col(self, indx):
+        """
+        This method returns the :class:`Column` at the given index of a
+        worksheet.
+
+        :param indx:
+
+            The zero-relative index of the column to be returned.
+        """
         if indx not in self.__cols:
             self.__cols[indx] = self.Column(indx, self)
         return self.__cols[indx]
 
     def row(self, indx):
+        """
+        This method returns the :class:`Row` at the given index of a worksheet.
+
+        :param indx:
+
+            The zero-relative index of the row to be returned.
+        """
         if indx not in self.__rows:
             if indx in self.__flushed_rows:
                 raise Exception("Attempt to reuse row index %d of sheet %r after flushing" % (indx, self.__name))
@@ -1148,12 +1231,28 @@ class Worksheet(object):
         return self.__rows[indx]
 
     def row_height(self, row): # in pixels
+        """
+        This method returns the height of a row in pixels.
+
+        :param row:
+
+            The zero-relative number of the row in the worksheet which will
+            have its height returned.
+        """
         if row in self.__rows:
             return self.__rows[row].get_height_in_pixels()
         else:
             return 17
 
     def col_width(self, col): # in pixels
+        """
+        This method returns the width of a column in pixels.
+
+        :param col:
+
+            The zero-relative number of the column in the worksheet which will
+            have its width returned.
+        """
         if col in self.__cols:
             return self.__cols[col].width_in_pixels()
         else:
