@@ -1165,20 +1165,20 @@ class Worksheet(object):
 
             The zero-relative number of the column in which the image will be
             inserted.
-        
+
         :param x:
-            
+
             Horizontal offset of the image relative to the starting column.
 
         :param y:
-            
+
             Vertical offset of the image relative to the starting row.
 
-        :param scale_x: 
+        :param scale_x:
 
             The horizontal scaling of the image.
 
-        :param scale_y: 
+        :param scale_y:
 
             The vertical scaling of the image.
         """
@@ -1205,20 +1205,20 @@ class Worksheet(object):
 
             The zero-relative number of the column in which the image will be
             inserted.
-        
+
         :param x:
-            
+
             Horizontal offset of the image relative to the starting column.
 
         :param y:
-            
+
             Vertical offset of the image relative to the starting row.
 
-        :param scale_x: 
+        :param scale_x:
 
             The horizontal scaling of the image.
 
-        :param scale_y: 
+        :param scale_y:
 
             The vertical scaling of the image.
         """
